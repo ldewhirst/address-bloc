@@ -39,7 +39,6 @@ class MenuController
     when 5
       system "clear"
       view_entry_n
-      view_entry
       main_menu
     when 6
       puts "Good-bye!"
@@ -96,10 +95,8 @@ class MenuController
     @address_book.entries.each_with_index do |entry, index|
       if entry_num = index
         puts entry.to_s
-        break
       else
         puts "Sorry, that is not a valid entry number"
-        break
       end
 
       index += 1
