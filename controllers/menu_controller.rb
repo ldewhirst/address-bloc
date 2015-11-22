@@ -17,12 +17,11 @@ class MenuController
     print "Enter your selection: "
 
     selection = gets.to_i
-    puts "You picked #{selection}"
 
     case selection
     when 1
       system "clear"
-      create_entry
+      view_all_entries
       main_menu
     when 2
       system "clear"
@@ -49,14 +48,58 @@ class MenuController
   end
 
   def view_all_entries
+    @address_book.entries.each do |entry|
+      system "clear"
+      puts entry.to_s
+        entry_submenu(entry)
+      end
+
+      system "clear"
+      puts "End of all entries"
   end
 
   def create_entry
+    system "clear"
+    puts "New AddressBloc Entry"
+
+    print "Name: "
+    name = gets.chomp
+    print "Phone Number: "
+    phone = gets.chomp
+    print "Email: "
+    email = gets.chomp
+
+    @address_book.add_entry(name, phone, email)
+
+    system "clear"
+    puts "New entry created"
   end
 
   def search_entries
   end
 
   def read_csv
+  end
+
+  def entry_submenu(entry)
+    puts "n - next entry"
+    puts "d - delete entry"
+    puts "e - edit this entry"
+    puts "m - return to the main menu"
+
+    selection = gets.chomp
+
+    case selection
+    when "n"
+    when "d"
+    when "e"
+    when "m"
+      system "clear"
+      main_menu
+    else
+      system "clear"
+      puts "#{selection} is not a valid input"
+      entries_submenu(entry)
+    end
   end
 end
