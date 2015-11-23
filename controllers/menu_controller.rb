@@ -93,7 +93,7 @@ class MenuController
     entry_num = gets.to_i - 1
 
     @address_book.entries.each_with_index do |entry, index|
-      if entry_num = index
+      if entry_num == index
         puts entry.to_s
       else
         puts "Sorry, that is not a valid entry number"
